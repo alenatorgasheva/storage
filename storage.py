@@ -38,9 +38,11 @@ def key(args, data):
 def val(args, data):
     """Adding data (--val)"""
     if args.key in data:
+        if not isinstance(data[args.key], list):
+           data[args.key] = [data[args.key]]
         data[args.key].append(args.val)
     else:
-        data[args.key] = [args.val]
+        data[args.key] = list(args.val)
 
 
 # Main:
